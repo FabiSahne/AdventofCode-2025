@@ -57,19 +57,28 @@ fn part2<R: BufRead>(mut reader: R) -> Result<usize> {
         let range = from.parse::<usize>()?..=to.parse::<usize>()?;
 
         for i in range {
-            let i_str = i.to_string();
+            // let i_str = i.to_string();
+            let mag = i.ilog10() + 1;
             let mut is_invalid = false;
 
-            for l in 1..=(i_str.len() / 2) {
-                if i_str.len() % l != 0 {
+            for l in 1..=(mag / 2) {
+                if mag % l != 0 {
                     continue;
                 }
 
-                let prefix = &i_str[..l];
+                let ten_to_l = 10usize.pow(l);
 
-                let repeat = i_str.len() / l;
+                let prefix = i % ten_to_l;
+                if prefix == 0 {
+                    continue;
+                }
 
-                if prefix.repeat(repeat) == i_str {
+                let mut compare = prefix;
+                while compare < i {
+                    compare = compare * ten_to_l + prefix;
+                }
+
+                if compare == i {
                     is_invalid = true;
                     break;
                 }
