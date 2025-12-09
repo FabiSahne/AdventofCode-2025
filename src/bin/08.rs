@@ -112,17 +112,12 @@ fn part1(reader: &mut dyn BufRead) -> Result<usize> {
     for _ in 0..number_to_connect {
         let Pair(box1, box2) = pairs.pop().unwrap();
 
-        let c1_idx = circuits.iter().position(|c| c.contains(&box1));
-        let c2_idx = circuits.iter().position(|c| c.contains(&box2));
-
-        assert!(c1_idx.is_some() && c2_idx.is_some());
+        let c1_idx = circuits.iter().position(|c| c.contains(&box1)).unwrap();
+        let c2_idx = circuits.iter().position(|c| c.contains(&box2)).unwrap();
 
         if c1_idx == c2_idx {
             continue;
         }
-
-        let c1_idx = c1_idx.unwrap();
-        let c2_idx = c2_idx.unwrap();
 
         let c2 = circuits[c2_idx].clone();
         circuits[c1_idx].extend(c2);
@@ -168,17 +163,12 @@ fn part2(reader: &mut dyn BufRead) -> Result<usize> {
     while circuits.len() > 1 {
         let Pair(box1, box2) = pairs.pop().unwrap();
 
-        let c1_idx = circuits.iter().position(|c| c.contains(&box1));
-        let c2_idx = circuits.iter().position(|c| c.contains(&box2));
-
-        assert!(c1_idx.is_some() && c2_idx.is_some());
+        let c1_idx = circuits.iter().position(|c| c.contains(&box1)).unwrap();
+        let c2_idx = circuits.iter().position(|c| c.contains(&box2)).unwrap();
 
         if c1_idx == c2_idx {
             continue;
         }
-
-        let c1_idx = c1_idx.unwrap();
-        let c2_idx = c2_idx.unwrap();
 
         let c2 = circuits[c2_idx].clone();
         circuits[c1_idx].extend(c2);
@@ -207,11 +197,11 @@ where
 {
     println!("\n  == Part {number:02} ==");
 
-    IS_TEST.swap(true, Ordering::AcqRel);
+    IS_TEST.swap(true, Ordering::Release);
     let mut test = BufReader::new(TEST.as_bytes());
     assert_eq!(expected, part(&mut test)?);
 
-    IS_TEST.swap(false, Ordering::AcqRel);
+    IS_TEST.swap(false, Ordering::Release);
     let mut input_file = BufReader::new(File::open(INPUT_FILE)?);
     let result = time!(part(&mut input_file)?);
     println!("Result: {result}");
