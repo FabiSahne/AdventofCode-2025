@@ -109,22 +109,24 @@ impl Op {
 }
 
 #[derive(Debug, Eq, PartialEq)]
-struct ParseOpError(String);
+struct ParseOpError(u8);
 
 impl Display for ParseOpError {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Error Parsing Op: {}", self.0)
+        write!(f, "Error Parsing Op: {:?}", self.0 as char)
     }
 }
 impl Error for ParseOpError {}
+
 impl FromStr for Op {
     type Err = ParseOpError;
 
-    fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
-        match s {
-            "+" => Ok(Self::Add),
-            "*" => Ok(Self::Mul),
-            _ => Err(ParseOpError(s.to_string())),
+    fn from_str(s: &str) -> Result<Op, ParseOpError> {
+        match s.as_bytes() {
+            b"+" => Ok(Op::Add),
+            b"*" => Ok(Op::Mul),
+            [b, ..] => Err(ParseOpError(*b)),
+            _ => Err(ParseOpError(0)),
         }
     }
 }
@@ -135,7 +137,7 @@ impl TryFrom<u8> for Op {
         match value {
             b'+' => Ok(Self::Add),
             b'*' => Ok(Self::Mul),
-            _ => Err(ParseOpError((value as char).to_string())),
+            _ => Err(ParseOpError(value)),
         }
     }
 }
