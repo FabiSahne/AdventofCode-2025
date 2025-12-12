@@ -20,4 +20,5 @@ Open the solution in your favorite IDE - for example Rider, or Visual Studio - a
 
 ### Rust
 
-Enter the Rust directory in your terminal and run `cargo run --release`.
+Enter the Rust directory in your terminal and run `cargo run --release --bin NN` where `NN` is the day in question.
+Or likewise open the directory in your favorite IDE - for example RustRover - and run the desired day, likely by pressing a play button next to the `main` function.
