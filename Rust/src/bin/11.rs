@@ -8,7 +8,7 @@ use std::{
 };
 
 const DAY: &str = "11";
-const INPUT_FILE: &str = concatcp!("input/", DAY, ".txt");
+const INPUT_FILE: &str = concatcp!("../input/", DAY, ".txt");
 
 const TESTS: [&str; 2] = [
     "\

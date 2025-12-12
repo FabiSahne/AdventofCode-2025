@@ -12,7 +12,7 @@ use z3::ast::Int;
 use z3::{Optimize, SatResult};
 
 const DAY: &str = "10";
-const INPUT_FILE: &str = concatcp!("input/", DAY, ".txt");
+const INPUT_FILE: &str = concatcp!("../input/", DAY, ".txt");
 
 const TEST: &str = "\
 [.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}

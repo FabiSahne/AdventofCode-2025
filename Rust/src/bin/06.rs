@@ -10,7 +10,7 @@ use std::{
 };
 
 const DAY: &str = "06";
-const INPUT_FILE: &str = concatcp!("input/", DAY, ".txt");
+const INPUT_FILE: &str = concatcp!("../input/", DAY, ".txt");
 
 const TEST: &str = "\
 123 328  51 64 

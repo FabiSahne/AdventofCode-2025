@@ -8,7 +8,7 @@ use anyhow::Result;
 use const_format::concatcp;
 
 const DAY: &str = "01";
-const INPUT_FILE: &str = concatcp!("input/", DAY, ".txt");
+const INPUT_FILE: &str = concatcp!("../input/", DAY, ".txt");
 
 const TEST: &str = "\
 L68

@@ -1,26 +1,23 @@
 # Advent of Code 2025
 
-Times[^1]:
+This year, I did Advent of Code in C# and Rust.
 
-| Day | Part 1 | Part 2  |
-|----:|:-------|:--------|
-|  01 | 157μs  | 159μs   |
-|  02 | 1.68ms | 4.88ms  |
-|  03 | 159μs  | 411μs   |
-|  04 | 102μs  | 1.95ms  |
-|  05 | 149μs  | 16.2μs  |
-|  06 | 143μs  | 48.2μs  |
-|  07 | 25.8μs | 21.3μs  |
-|  08 | 27.2ms | 31.5ms  |
-|  09 | 91.5μs | 18.1ms  |
-|  10 | 42.9ms | 36.6ms  |
-|  11 | 259μs  | 430μs   |
-|  12 | 190μs  | N/A[^2] |
-|     |        |         |
-| Max | 42.9ms | 36.6ms  |
-| Avg | 831μs  | 150ms   |
+Please look in the respective subdirectory for the project.
 
-Running all twelve days in order takes 224ms.
+---
 
-[^1]: All measurements where taken on a Ryzen 5800X @ 4.85GHz on Fedora 43 using Rust v1.92.0 stable.
-[^2]: Day 12 has no Part 2.
+Each day (except day 12) first checks each solution against the provided sample via assertions before running with the actual input.
+
+## Building
+
+If you want to build this for yourself, create a new subdirectory called `input` within this repository's root.
+Then place each day named `NN.txt` where `NN` is the number of the day in question filled to two digits.
+E.g. The input file of day 6 will be named `06.txt`.
+
+### C#
+
+Open the solution in your favorite IDE - for example Rider, or Visual Studio - and run the program.
+
+### Rust
+
+Enter the Rust directory in your terminal and run `cargo run --release`.

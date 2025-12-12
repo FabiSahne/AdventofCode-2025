@@ -9,7 +9,7 @@ use const_format::concatcp;
 use rayon::prelude::*;
 
 const DAY: &str = "02";
-const INPUT_FILE: &str = concatcp!("input/", DAY, ".txt");
+const INPUT_FILE: &str = concatcp!("../input/", DAY, ".txt");
 
 const TEST: &str = "\
 11-22,95-115,998-1012,1188511880-1188511890,222220-222224,\

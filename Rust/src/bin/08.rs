@@ -11,7 +11,7 @@ use std::{
 };
 
 const DAY: &str = "08";
-const INPUT_FILE: &str = concatcp!("input/", DAY, ".txt");
+const INPUT_FILE: &str = concatcp!("../input/", DAY, ".txt");
 
 const TEST: &str = "\
 162,817,812

@@ -1,6 +1,7 @@
-/target
-/.idea
-/src/bin/template.rs
+/CSharp/bin
+/CSharp/obj
+/Rust/target
+/*/.idea
+/Rust/src/bin/template.rs
 /input
-/input/
 perf.*
